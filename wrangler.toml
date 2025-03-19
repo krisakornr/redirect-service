@@ -1,0 +1,6 @@
+name = "redirect-worker"
+type = "javascript"
+
+[site]
+bucket = "./"
+entry-point = "workers"
