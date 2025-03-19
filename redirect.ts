@@ -12,13 +12,14 @@ serve((req) => {
   console.log(`Incoming request: ${req.url}`);
   console.log(`Extracted T: ${paramT}`);
 
-  const redirectUrl = REDIRECT_MAP[paramT ?? ""] ?? "https://example.com";
-  console.log(`Redirecting to: ${redirectUrl}`);
+  if (paramT && REDIRECT_MAP[paramT]) {
+    const redirectUrl = REDIRECT_MAP[paramT];
+    console.log(`Redirecting to: ${redirectUrl}`);
 
-  return new Response(null, {
-    status: 301,
-    headers: { Location: redirectUrl },
-  });
-}, { port: 8000 });
+    return new Response(null, {
+      status: 301,
+      headers: { Location: redirectUrl },
+    });
+  }
 
-console.log("✅ Server is running on http://localhost:8000");
+  // Return an erro
