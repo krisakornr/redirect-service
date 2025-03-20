@@ -7,7 +7,7 @@ const REDIRECT_MAP: Record<string, string> = {
 
 serve((req) => {
   const url = new URL(req.url);
-  const paramT = url.searchParams.get("T");
+  const paramT = url.searchParams.get("tt");
 
   console.log(`Incoming request: ${req.url}`);
   console.log(`Extracted T: ${paramT}`);
